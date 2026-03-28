@@ -215,28 +215,28 @@ document.addEventListener('DOMContentLoaded', () => {
     heroObserver.observe(document.getElementById('hero'));
   }
 
-  // --- Typewriter effect on hero tagline ---
+  // --- Soft fade-in word by word on hero tagline ---
   const tagline = document.querySelector('.hero-tagline');
   if (tagline) {
-    const html = tagline.innerHTML;
+    const text = tagline.textContent;
+    const words = text.split('');
     tagline.innerHTML = '';
     tagline.style.visibility = 'visible';
-    let i = 0;
-    const typeWriter = () => {
-      if (i < html.length) {
-        // Handle HTML tags (like <br>)
-        if (html[i] === '<') {
-          const closeTag = html.indexOf('>', i);
-          tagline.innerHTML += html.substring(i, closeTag + 1);
-          i = closeTag + 1;
-        } else {
-          tagline.innerHTML += html[i];
-          i++;
-        }
-        setTimeout(typeWriter, 60);
-      }
-    };
-    setTimeout(typeWriter, 800);
+
+    words.forEach((char, i) => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      span.style.opacity = '0';
+      span.style.display = 'inline';
+      span.style.transition = `opacity 0.8s ease, transform 0.8s ease`;
+      span.style.transform = 'translateY(12px)';
+      tagline.appendChild(span);
+
+      setTimeout(() => {
+        span.style.opacity = '1';
+        span.style.transform = 'translateY(0)';
+      }, 800 + i * 80);
+    });
   }
 
   // --- 3D Tilt effect on business cards ---
