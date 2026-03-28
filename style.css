@@ -231,7 +231,6 @@ img {
   width: 280px;
   height: auto;
   margin-bottom: 40px;
-  filter: brightness(0) invert(1);
   animation: fadeInUp 0.8s ease-out;
 }
 
