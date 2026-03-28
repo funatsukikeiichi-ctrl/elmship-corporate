@@ -215,6 +215,50 @@ document.addEventListener('DOMContentLoaded', () => {
     heroObserver.observe(document.getElementById('hero'));
   }
 
+  // --- Typewriter effect on hero tagline ---
+  const tagline = document.querySelector('.hero-tagline');
+  if (tagline) {
+    const html = tagline.innerHTML;
+    tagline.innerHTML = '';
+    tagline.style.visibility = 'visible';
+    let i = 0;
+    const typeWriter = () => {
+      if (i < html.length) {
+        // Handle HTML tags (like <br>)
+        if (html[i] === '<') {
+          const closeTag = html.indexOf('>', i);
+          tagline.innerHTML += html.substring(i, closeTag + 1);
+          i = closeTag + 1;
+        } else {
+          tagline.innerHTML += html[i];
+          i++;
+        }
+        setTimeout(typeWriter, 60);
+      }
+    };
+    setTimeout(typeWriter, 800);
+  }
+
+  // --- 3D Tilt effect on business cards ---
+  const tiltCards = document.querySelectorAll('.business-card, .value-item');
+  tiltCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / centerY * -8;
+      const rotateY = (x - centerX) / centerX * 8;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+    });
+  });
+
   // --- Smooth scroll for nav links ---
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
