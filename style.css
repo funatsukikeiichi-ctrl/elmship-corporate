@@ -525,24 +525,17 @@ img {
   overflow: hidden;
 }
 
-.stats-section::before {
-  content: '';
-  position: absolute;
-  top: -60px;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background: linear-gradient(to bottom, transparent, rgba(104, 176, 77, 0.05));
+.stats-wave-top,
+.stats-wave-bottom {
+  line-height: 0;
+  overflow: hidden;
 }
 
-.stats-section::after {
-  content: '';
-  position: absolute;
-  bottom: -60px;
-  left: 0;
+.stats-wave-top svg,
+.stats-wave-bottom svg {
   width: 100%;
   height: 60px;
-  background: linear-gradient(to top, transparent, rgba(104, 176, 77, 0.05));
+  display: block;
 }
 
 .stats-grid {
