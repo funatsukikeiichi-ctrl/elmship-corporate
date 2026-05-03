@@ -1,3 +1,6 @@
-/kaitoridaikichi /daikichi/ 301
-/kaitoridaikichi/ /daikichi/ 301
-/kaitoridaikichi/* /daikichi/:splat 301
+/daikichi https://daikichi.elmship.com/ 301
+/daikichi/ https://daikichi.elmship.com/ 301
+/daikichi/* https://daikichi.elmship.com/:splat 301
+/kaitoridaikichi https://daikichi.elmship.com/ 301
+/kaitoridaikichi/ https://daikichi.elmship.com/ 301
+/kaitoridaikichi/* https://daikichi.elmship.com/:splat 301
